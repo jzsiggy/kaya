@@ -2,12 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+int yylex();
+int yyerror(char* s);
 %}
 
 %token NUMBER IDENTIFIER
 %token PLUS MINUS TIMES DIVIDE LPAREN RPAREN
 %token IF THEN ELSE END
 %token FOR IN TO DO FUNC COMMA ASSIGN PRINT
+%token LBRACE RBRACE LSQUARE RSQUARE
+%token COLON DOT MULT DIV NOT
 %left PLUS MINUS
 %left TIMES DIVIDE
 %nonassoc UNARY
@@ -70,16 +74,11 @@ arg_list : /* empty */
          ;
 
 %%
-int main(int argc, char** argv) {
-    /* Set up the lexer and start parsing */
-    yylex_init();
-    yyin = stdin;
-    yyparse();
-    yylex_destroy();
-    return 0;
+main(int argc, char **argv)
+{
+ yyparse();
 }
-
-void yyerror(char* msg) {
-    fprintf(stderr, "Error: %s\n", msg);
-    exit(1);
+yyerror(char *s)
+{
+ fprintf(stderr, "error: %s\n", s);
 }

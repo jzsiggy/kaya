@@ -59,7 +59,16 @@
      COMMA = 275,
      ASSIGN = 276,
      PRINT = 277,
-     UNARY = 278
+     LBRACE = 278,
+     RBRACE = 279,
+     LSQUARE = 280,
+     RSQUARE = 281,
+     COLON = 282,
+     DOT = 283,
+     MULT = 284,
+     DIV = 285,
+     NOT = 286,
+     UNARY = 287
    };
 #endif
 /* Tokens.  */
@@ -83,7 +92,16 @@
 #define COMMA 275
 #define ASSIGN 276
 #define PRINT 277
-#define UNARY 278
+#define LBRACE 278
+#define RBRACE 279
+#define LSQUARE 280
+#define RSQUARE 281
+#define COLON 282
+#define DOT 283
+#define MULT 284
+#define DIV 285
+#define NOT 286
+#define UNARY 287
 
 
 
