@@ -41,67 +41,65 @@
    enum yytokentype {
      NUMBER = 258,
      IDENTIFIER = 259,
-     PLUS = 260,
-     MINUS = 261,
-     TIMES = 262,
-     DIVIDE = 263,
-     LPAREN = 264,
-     RPAREN = 265,
-     IF = 266,
-     THEN = 267,
-     ELSE = 268,
-     END = 269,
-     FOR = 270,
-     IN = 271,
-     TO = 272,
-     DO = 273,
-     FUNC = 274,
-     COMMA = 275,
-     ASSIGN = 276,
-     PRINT = 277,
-     LBRACE = 278,
-     RBRACE = 279,
-     LSQUARE = 280,
-     RSQUARE = 281,
+     ARROW = 260,
+     PLUS = 261,
+     MINUS = 262,
+     MULT = 263,
+     DIV = 264,
+     LPAREN = 265,
+     RPAREN = 266,
+     OR = 267,
+     AND = 268,
+     EQUALS = 269,
+     GREATER = 270,
+     LESSER = 271,
+     IF = 272,
+     THEN = 273,
+     ELSE = 274,
+     END = 275,
+     WHILE = 276,
+     FOR = 277,
+     FUNC = 278,
+     COMMA = 279,
+     ASSIGN = 280,
+     PRINT = 281,
      COLON = 282,
      DOT = 283,
-     MULT = 284,
-     DIV = 285,
-     NOT = 286,
-     UNARY = 287
+     NOT = 284,
+     RETURN = 285,
+     UNARY = 286
    };
 #endif
 /* Tokens.  */
 #define NUMBER 258
 #define IDENTIFIER 259
-#define PLUS 260
-#define MINUS 261
-#define TIMES 262
-#define DIVIDE 263
-#define LPAREN 264
-#define RPAREN 265
-#define IF 266
-#define THEN 267
-#define ELSE 268
-#define END 269
-#define FOR 270
-#define IN 271
-#define TO 272
-#define DO 273
-#define FUNC 274
-#define COMMA 275
-#define ASSIGN 276
-#define PRINT 277
-#define LBRACE 278
-#define RBRACE 279
-#define LSQUARE 280
-#define RSQUARE 281
+#define ARROW 260
+#define PLUS 261
+#define MINUS 262
+#define MULT 263
+#define DIV 264
+#define LPAREN 265
+#define RPAREN 266
+#define OR 267
+#define AND 268
+#define EQUALS 269
+#define GREATER 270
+#define LESSER 271
+#define IF 272
+#define THEN 273
+#define ELSE 274
+#define END 275
+#define WHILE 276
+#define FOR 277
+#define FUNC 278
+#define COMMA 279
+#define ASSIGN 280
+#define PRINT 281
 #define COLON 282
 #define DOT 283
-#define MULT 284
-#define DIV 285
-#define NOT 286
-#define UNARY 287
+#define NOT 284
+#define RETURN 285
+#define UNARY 286
 
 
 

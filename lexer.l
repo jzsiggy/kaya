@@ -11,18 +11,18 @@
 "then"                  { return THEN; }
 "else"                  { return ELSE; }
 "end"                   { return END; }
-"for"                   { return FOR; }
-"to"                    { return TO; }
-"do"                    { return DO; }
+"while"                 { return WHILE; }
 "func"                  { return FUNC; }
-"print"                 { return PRINT; }
-"["                     { return LSQUARE; }
-"]"                     { return RSQUARE; }
-"{"                     { return LBRACE; }
-"}"                     { return RBRACE; }
-":"                     { return COLON; }
-"="                     { return ASSIGN; }
+"show"                  { return PRINT; }
+"ret"                   { return RETURN; }
+"||"                    { return OR; }
+"&&"                    { return AND; }
+"=="                    { return EQUALS; }
+"<="                    { return ASSIGN; }
+"=>"                    { return ARROW; }
 "."                     { return DOT; }
+">"                     { return GREATER; }
+"<"                     { return LESSER; }
 ","                     { return COMMA; }
 "+"                     { return PLUS; }
 "-"                     { return MINUS; }
@@ -34,5 +34,6 @@
 [0-9]+                  { return NUMBER; }
 [a-zA-Z][a-zA-Z0-9]*    { return IDENTIFIER; }
 [ \t\n]                 { /* ignore whitespace */ }
+";"                     { /* ignore semi-colon */ }
 
 %%

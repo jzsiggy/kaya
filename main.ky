@@ -1,0 +1,23 @@
+x <= 12 + 4
+
+func soma(a, b)
+    ret a+b
+end
+
+show( soma(x, 1*2) )
+
+while x > 3 => 
+    x <= soma(x, -1) 
+end
+
+show(x)
+
+if x == 3 then; show("x é três"); else; show("x não é três"); end
+
+z <= 10
+
+while not not z => 
+    z <= soma(z, -1) 
+end
+
+show(z)

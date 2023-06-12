@@ -6,14 +6,14 @@ int yylex();
 int yyerror(char* s);
 %}
 
-%token NUMBER IDENTIFIER
-%token PLUS MINUS TIMES DIVIDE LPAREN RPAREN
-%token IF THEN ELSE END
-%token FOR IN TO DO FUNC COMMA ASSIGN PRINT
-%token LBRACE RBRACE LSQUARE RSQUARE
-%token COLON DOT MULT DIV NOT
+%token NUMBER IDENTIFIER ARROW
+%token PLUS MINUS MULT DIV LPAREN RPAREN
+%token OR AND EQUALS GREATER LESSER
+%token IF THEN ELSE END WHILE
+%token FOR FUNC COMMA ASSIGN PRINT
+%token COLON DOT NOT RETURN
 %left PLUS MINUS
-%left TIMES DIVIDE
+%left MULT DIV
 %nonassoc UNARY
 
 %%
@@ -23,18 +23,19 @@ program : statement
 
 statement : assignment
           | if_statement
-          | for_loop
+          | while_loop
           | function_definition
           | print_statement
+          | return
           ;
 
-assignment : IDENTIFIER ASSIGN expression
+assignment : IDENTIFIER ASSIGN rel_expression
            ;
 
-if_statement : IF expression THEN statement ELSE statement END
+if_statement : IF rel_expression THEN statement ELSE statement END
              ;
 
-for_loop : FOR IDENTIFIER IN expression TO expression DO statement END
+while_loop : WHILE rel_expression ARROW statement END
          ;
 
 function_definition : FUNC IDENTIFIER LPAREN param_list RPAREN statement END
@@ -45,40 +46,53 @@ param_list : /* empty */
            | param_list COMMA IDENTIFIER
            ;
 
-print_statement : PRINT LPAREN expression RPAREN
+print_statement : PRINT LPAREN rel_expression RPAREN
                 ;
 
+rel_expression : expression
+               | expression LESSER expression
+               | expression GREATER expression
+               | expression EQUALS expression
+               ;
+
 expression : term
-           | expression PLUS term
-           | expression MINUS term
+           | term PLUS term
+           | term MINUS term
+           | term OR term
            ;
 
 term : factor
-     | term TIMES factor
-     | term DIVIDE factor
+     | factor MULT factor
+     | factor DIV factor
+     | factor AND factor
      ;
 
 factor : NUMBER
        | IDENTIFIER
        | LPAREN expression RPAREN
        | MINUS factor %prec UNARY
+       | NOT factor %prec UNARY
        | function_call
        ;
 
 function_call : IDENTIFIER LPAREN arg_list RPAREN
               ;
 
+return : RETURN rel_expression ;
+
 arg_list : /* empty */
-         | expression
-         | arg_list COMMA expression
+         | rel_expression
+         | arg_list COMMA rel_expression
          ;
 
 %%
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
  yyparse();
+ return 0;
 }
-yyerror(char *s)
+int yyerror(char *s)
 {
  fprintf(stderr, "error: %s\n", s);
+ return 0;
 }

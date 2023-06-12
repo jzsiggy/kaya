@@ -1,16 +1,20 @@
 program = { statement } ;
 
-statement = assignment | if_statement | for_loop | function_definition | print_statement ;
+statement = assignment | if_statement | while_loop | function_definition | print_statement ;
 
-assignment = variable "=" expression ;
+assignment = variable "<=" expression ;
 
 if_statement = "if" expression "then" statement { "else" statement } "end" ;
 
-for_loop = "for" variable "in" expression "to" expression "do" statement "end" ;
+while_loop = "while" expression "=>" statement "end" ;
 
 function_definition = "func" identifier "(" [ parameter { "," parameter } ] ")" statement "end" ;
 
+print_statement = "show" "(" expression ")" ;
+
 parameter = identifier ;
+
+rel_expression = expression { rel_op expression } ;
 
 expression = term { add_op term } ;
 
@@ -18,31 +22,25 @@ term = factor { mul_op factor } ;
 
 factor = number | variable | "(" expression ")" | unary_op factor | function_call ;
 
-variable = identifier { "[" expression "]" | "." identifier } ;
+variable = identifier ;
 
-print_statement = "print" "(" expression ")" ;
+function_call = identifier "(" [ expression { "," expression } ] ")" ;
 
-function_call = { identifier "." } identifier "(" [ expression { "," expression } ] ")" ;
+rel_op = "==" | ">" | "<" ;
 
-list = "[" [ expression { "," expression } ] "]" ;
+add_op = "+" | "-" | "||" ;
 
-object = "{" [ property { "," property } ] "}" ;
-
-property = identifier ":" expression ;
-
-add_op = "+" | "-" ;
-
-mul_op = "*" | "/" ;
+mul_op = "*" | "/" | "&&" ;
 
 unary_op = "-" | "not" ;
 
-number = floating_point | integer ;
+number = integer ;
 
 integer = digit { digit } ;
 
-floating_point = digit+ "." digit+ ;
-
 identifier = letter { letter | digit } ;
+
+return = "ret" rel_expression ;
 
 digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
 
