@@ -1,3 +1,7 @@
+# Presentation
+
+[https://slides.com/joaozsigmond/palette](https://slides.com/joaozsigmond/palette)
+
 # Building with Flex and Bison
 
 `bison -d parser.y`
@@ -12,7 +16,7 @@
 
 `node kaya.js source_code.ky`
 
-# EBNF Form
+# EBNF
 
 ```
 program = { statement } ;

@@ -1,0 +1,11 @@
+# mostando escopo
+
+func function()
+    x <= 0
+    show(x)
+end
+
+function()
+
+# vai dar erro...
+show(x)
