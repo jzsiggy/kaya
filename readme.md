@@ -16,6 +16,38 @@
 
 `node kaya.js source_code.ky`
 
+# Basics
+
+```python
+# this is a comment
+
+# variable definition (no types)
+x <= 5 # x receives 5
+
+# printing to stdout
+show(x)
+
+# conditional statements
+if x > 0 then
+    show(x)
+else
+    show("x is smaller than 0")
+end
+
+# loops
+while x < 0 =>
+    x <= x + 1
+end
+
+# function definition (scoped variables)
+func sum(a, b, c)
+    ret a+b+c
+end
+
+# optional semicolon at the end of the line.
+
+```
+
 # EBNF
 
 ```
