@@ -44,6 +44,12 @@ func sum(a, b, c)
     ret a+b+c
 end
 
+func deny(x)
+    ret not x
+end
+
+show(deny(sum(1,2,3))); # will print 0
+
 # optional semicolon at the end of the line.
 
 ```
