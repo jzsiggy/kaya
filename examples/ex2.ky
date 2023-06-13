@@ -1,0 +1,9 @@
+func count_by_2(x)
+    counter <= 0;
+    while counter < x =>
+        show(counter*2)
+        counter <= counter + 1
+    end
+end
+
+count_by_2(10)

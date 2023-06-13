@@ -1,0 +1,13 @@
+func is_ten(number)
+    if number == 10 then
+        show("TEN!")
+    else
+        show("NOT TEN!")
+    end
+end
+
+counter <= 0
+while (counter < 20) =>
+    is_ten(counter)
+    counter <= counter + 1
+end

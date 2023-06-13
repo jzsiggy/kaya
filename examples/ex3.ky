@@ -1,0 +1,8 @@
+func count(start, increment, end_)
+    while start < end_ =>
+        start <= start+increment
+        show(start)
+    end
+end
+
+count(0, 10, 200)

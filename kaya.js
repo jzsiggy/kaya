@@ -138,7 +138,7 @@ class If {
     }
 
     evaluate(symbolTable) {
-        if (this.children[0].evaluate(symbolTable)) {
+        if (this.children[0].evaluate(symbolTable).value) {
             this.children[1].evaluate(symbolTable)
         }
         else {
@@ -576,19 +576,19 @@ class Parser {
                                 this.tokenizer.selectNext();
                                 return new Assignment("<=", [identifier, expr]);
                             } else
-                                if (this.tokenizer.next.type == "open_par") {
-                                    let args = [];
-                                    this.tokenizer.selectNext();
-                                    while (this.tokenizer.next.type != "close_par") {
-                                        args.push(this.parseRelExpression())
-                                        if (this.tokenizer.next.type == "close_par") break
-                                        if (this.tokenizer.next.type != "comma") throw new Error()
-                                        this.tokenizer.selectNext()
-                                    }
-                                    if (this.tokenizer.next.type != "close_par") throw new Error()
+                            if (this.tokenizer.next.type == "open_par") {
+                                let args = [];
+                                this.tokenizer.selectNext();
+                                while (this.tokenizer.next.type != "close_par") {
+                                    args.push(this.parseRelExpression())
+                                    if (this.tokenizer.next.type == "close_par") break
+                                    if (this.tokenizer.next.type != "comma") throw new Error()
                                     this.tokenizer.selectNext()
-                                    return new FunctionCall(identifier.value, args);
-                                } else throw new Error()
+                                }
+                                if (this.tokenizer.next.type != "close_par") throw new Error()
+                                this.tokenizer.selectNext()
+                                return new FunctionCall(identifier.value, args);
+                            } else throw new Error()
                         } else
 
                             if (this.tokenizer.next.type == "while") {
